@@ -1,9 +1,15 @@
 import React from 'react';
-
-
+import PasswordReset from './components/PasswordReset';
+import {
+  BrowserRouter,
+  Route
+} from "react-router-dom";
 function App() {
   return (
     <div>
+      <BrowserRouter>
+        <PasswordReset />
+      </BrowserRouter>
       
       <div>
         <h4>Information provided by</h4>
