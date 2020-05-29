@@ -1,5 +1,5 @@
 import React from 'react';
-import SignIn from './components/SignIn';
+import Search from './components/Search';
 import {
   BrowserRouter,
   Route
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <SignIn />
+        <Search />
       </BrowserRouter>
       
       <div>
