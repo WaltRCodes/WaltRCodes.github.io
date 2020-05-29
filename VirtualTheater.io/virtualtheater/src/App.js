@@ -1,5 +1,5 @@
 import React from 'react';
-import PasswordReset from './components/PasswordReset';
+import SignIn from './components/SignIn';
 import {
   BrowserRouter,
   Route
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <PasswordReset />
+        <SignIn />
       </BrowserRouter>
       
       <div>
