@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 export default class LeaveReview extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ export default class LeaveReview extends Component {
     this.setState({rating: parseFloat(event.target.value)});
   }
 
-  takeDescription(){
+  takeDescription(event){
     this.setState({description: event.target.value});
   }
 
