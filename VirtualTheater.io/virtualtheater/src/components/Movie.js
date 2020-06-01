@@ -6,7 +6,9 @@ export default class Movie extends Component {
     super(props);
     this.state = {
       searchTerm: "",
-      movieHTML:''
+      movieHTML:'',
+      reviewHTML:'',
+      users:[]
          
     }
    
