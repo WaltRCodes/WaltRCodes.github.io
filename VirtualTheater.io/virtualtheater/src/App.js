@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './components/Search';
+import Movie from './components/Movie';
 import {
   BrowserRouter,
   Route
@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Search />
+        <Movie />
       </BrowserRouter>
       
       <div>
