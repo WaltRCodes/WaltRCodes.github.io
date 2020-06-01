@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Movie id="419704" />
+        <Movie id="419704" userId={2} />
       </BrowserRouter>
       
       <div>
