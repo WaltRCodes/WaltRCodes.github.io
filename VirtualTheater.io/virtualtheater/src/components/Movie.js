@@ -41,15 +41,21 @@ export default class Movie extends Component {
             <div>Produced in the following countries: {movie.production_countries.map(country => <p>{country.name}</p>)}</div>
         </div>
         <button>Buy the movie for $19.99</button>
-        <LeaveReview userId={this.props.userId} reviewId={null} movieId={movie.id}/>
+        <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>;
 
-    let reviewsHTML = reviews.map(review => <div>
+    let reviewsHTML = reviews.map(review => <div id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
         <p>{users.filter(user => user.id===review.userId)[0].name}</p>
         <p>{review.rating}</p>
         <p>{review.date}</p>
         <p>{review.description}</p>
+        {(users.filter(user => user.id===review.userId)[0].id === this.props.userId) ? <div>
+            
+            <LeaveReview bttonText="Edit your post" filling={true} userId={this.props.userId} reviewId={review.id} movieId={this.props.id} rating={review.rating} desc={review.description}/>
+            <button onClick={() => {this.deleteApi("reviews",review.id);document.getElementById(review.id).style.display="none";}}>Delete your post</button>
+        </div>
+        : <div></div>}
         </div>); 
       this.setState({
         movieHTML: movieHTML, reviewHTML:reviewsHTML
@@ -77,7 +83,18 @@ async postDatabase(term,object) {
   };
 
  
- 
+  async deleteApi(term,id) {
+    console.log("This is running",id);
+    try {
+      //const response = await axios.delete('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v2/'+term+'/'+id);
+      const response = await axios.delete('/walter_api/v3/'+term+'/'+id);
+      
+      console.log(response.data);
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
 
 

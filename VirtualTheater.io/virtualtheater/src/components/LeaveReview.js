@@ -16,6 +16,14 @@ export default class LeaveReview extends Component {
         this.takeRating = this.takeRating.bind(this);
         this.takeDescription = this.takeDescription.bind(this);
   }
+  componentDidUpdate(){
+    //console.log(document.getElementById('rating').value,document.getElementById('description').value);
+    if(this.state.isFillingOutForm){
+        document.getElementById('rating').value=this.props.rating;
+        document.getElementById('desc').value=this.props.desc;
+    }
+    
+  }
 
   takeRating(event){
     {/* update the ymbol in state */}
@@ -68,12 +76,12 @@ export default class LeaveReview extends Component {
             <form onSubmit={this.submitForm}>
                 <label>
                     Rating:
-                    <input type="number" onChange={this.takeRating} placeholder="0.0"/>
+                    <input type="number" onChange={this.takeRating} id="rating" placeholder="0.0"/>
                     <br />
                 </label>
                 <label>
                     Comment:
-                    <input type="text" onChange={this.takeDescription} placeholder="Comment"/>
+                    <input type="text" onChange={this.takeDescription} id="desc" placeholder="Comment"/>
                     <br />
                 </label>
                 <label>
@@ -84,7 +92,7 @@ export default class LeaveReview extends Component {
         </div>
       :
         <div>
-            <button onClick={this.handleClick}>Leave a review</button>
+            <button onClick={this.handleClick}>{this.props.bttonText}</button>
         </div>
       
     )
