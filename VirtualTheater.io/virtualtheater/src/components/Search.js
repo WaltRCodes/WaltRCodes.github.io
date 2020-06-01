@@ -63,20 +63,8 @@ async postDatabase(term,object) {
   render() {
     return (
       <div className="main">
-            <form onSubmit={this.makeSearch}>
-            <h1>What Ingredients do you already have?</h1>
-            <label>
-                Search
-                <input type="text" onChange={this.takeTerm} placeholder="search term"/>
-            </label>
-            <br />
-            
-            <br />
-            <label>
-                <input type="submit" value="Submit"/>
-            </label>
-          </form>
-            <div>{this.state.resultsHTML}</div>
+            <h1>Check out this awesome selection of movies</h1>
+            <div className="grid">{this.state.resultsHTML}</div>
       </div>
       
     )

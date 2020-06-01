@@ -1,12 +1,27 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  grid-gap: 1em;
+  padding-top: 30px;
+}
+
+
 .cell{
+  grid-column: span 4;
   background-color: aliceblue;
   width: 200px;
   opacity: 0%;
   transition: all 1s;
   height:300px;
+  overflow: hidden;
 }
 
 .cell:hover{
   opacity: 100%;
-  height: fit-content;
 }
