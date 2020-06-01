@@ -12,7 +12,7 @@ export default class Movie extends Component {
   }
   async callApi() {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/419704?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
       
       console.log(response.data);
     let movie = response.data;
