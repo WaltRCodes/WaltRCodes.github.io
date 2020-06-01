@@ -8,7 +8,8 @@ export default class Movie extends Component {
       searchTerm: "",
       movieHTML:'',
       reviewHTML:'',
-      users:[]
+      users:[],
+      purchase:''
          
     }
    
@@ -40,7 +41,31 @@ export default class Movie extends Component {
             <div>Production provided by: {movie.production_companies.map(company => <p>{company.name}</p>)}</div>
             <div>Produced in the following countries: {movie.production_countries.map(country => <p>{country.name}</p>)}</div>
         </div>
-        <button>Buy the movie for $19.99</button>
+        <button onClick={() => {
+            if(this.props.balance-19.99>0){
+            this.postDatabase("transactions",{
+                "title": movie.title,
+                "date": new Date().toUTCString(),
+                "image": "https://image.tmdb.org/t/p/w200"+movie.poster_path,
+                "price": 19.99,
+                "userId": this.props.userId
+                });
+            this.postDatabase("accounts",{
+                "id": this.props.userId,
+                "balance": this.props.balance-19.99,
+                "email": this.props.user.email,
+                "password": this.props.user.password,
+                "name": this.props.user.name,
+                "address": this.props.user.address
+
+            });
+            console.log(this.props.balance-19.99);
+            this.setState({purchase:<p>Congrats on your purchase!</p>});
+        } else {
+                this.setState({purchase:<p>You dont have the neccessary funds</p>});
+            }
+        }}>Buy the movie for $19.99</button>
+        <div>{this.state.purchase}</div>
         <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>;
 

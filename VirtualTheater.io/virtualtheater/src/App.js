@@ -9,7 +9,12 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Movie id="419704" userId={2} />
+        <Movie id="419704" userId={2} balance={5000} user={{
+                "email": "dev.rada0#gmail.com",
+                "password": "password",
+                "name": "Walter",
+                "address": "345"
+            }}/>
       </BrowserRouter>
       
       <div>
