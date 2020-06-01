@@ -35,7 +35,7 @@ export default class LeaveReview extends Component {
   async postApi(object) {
     try {
       //const response = await axios.post('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v2/ingredients',object);
-      const response = await axios.post('http://localhost:8080/walter_api/v3/reviews',object);
+      const response = await axios.post('/walter_api/v3/reviews',object);
       console.log(response.data);
       console.log(response);
       

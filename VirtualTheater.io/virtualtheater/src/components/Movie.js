@@ -30,7 +30,7 @@ export default class Movie extends Component {
             <div>Produced in the following countries: {movie.production_countries.map(country => <p>{country.name}</p>)}</div>
         </div>
         <button>Buy the movie for $19.99</button>
-        <LeaveReview userId={1} reviewId={null} movieID={movie.id}/>
+        <LeaveReview userId={1} reviewId={null} movieId={movie.id}/>
         </div>;
       this.setState({
         movieHTML: movieHTML
