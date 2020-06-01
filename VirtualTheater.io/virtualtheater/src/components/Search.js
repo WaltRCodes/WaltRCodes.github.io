@@ -19,28 +19,10 @@ export default class Search extends Component {
       const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}`);
       
       console.log(response.data);
-    //   let elements = response.data.map(recipe => <Recipe id={recipe.id} search={true} editRecipe={''} title={recipe.title} image={recipe.image} 
-    //     ingredients={recipe.missedIngredients.map(ingredient => <div>{ingredient.originalString}<div id={ingredient.id}><button onClick={() => {this.postDatabase("ingredients",{
-    //     "id": this.state.ingredients.findIndex(stored => stored.name===ingredient.name)!=-1 ? this.state.ingredients[this.state.ingredients.findIndex(stored => stored.name===ingredient.name)].id:null,//put check here later and make button diappear
-    //     "name": ingredient.name,
-    //     "amount": this.state.ingredients.findIndex(stored => stored.name===ingredient.name)!=-1 ? this.state.ingredients[this.state.ingredients.findIndex(stored => stored.name===ingredient.name)].amount+ingredient.amount:ingredient.amount,
-    //     "image": ingredient.image,
-    //     "unit": ingredient.unit,
-    //     "userId": this.props.id
-    // }); document.getElementById(ingredient.id).innerHTML="Added Ingredient!";}}>Add this ingredient to your list</button></div></div>)}
-    // addRecipe={() => {this.postDatabase("recipes",{
-    //     "id": null,//put check here later and make button diappear
-    //     "name": recipe.title,
-    //     "image": recipe.image,
-    //     "description": "null",
-    //     "ingredients": recipe.missedIngredients.map(ingredient =>ingredient.originalString),
-    //     "userId": this.props.id
-    // }); document.getElementById(recipe.id).innerHTML="Added Recipe!";}}
-    // />);
-        {/* store the values in state*/}
-    //   this.setState({
-    //     resultsHTML: elements
-    //   })
+    let elements = response.data.results.map(movie => <div style={{background: `url("https://image.tmdb.org/t/p/w200${movie.poster_path}") no-repeat`}}><div className="cell"><h4>{movie.title}</h4><h5>{movie.release_date}</h5><p>{movie.overview}</p></div></div>);
+      this.setState({
+        resultsHTML: elements
+      })
     } catch (e) {
       console.log(e);
     }
@@ -94,7 +76,7 @@ async postDatabase(term,object) {
                 <input type="submit" value="Submit"/>
             </label>
           </form>
-            <div className="grid">{this.state.resultsHTML}</div>
+            <div>{this.state.resultsHTML}</div>
       </div>
       
     )

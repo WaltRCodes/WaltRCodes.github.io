@@ -1,0 +1,12 @@
+.cell{
+  background-color: aliceblue;
+  width: 200px;
+  opacity: 0%;
+  transition: all 1s;
+  height:300px;
+}
+
+.cell:hover{
+  opacity: 100%;
+  height: fit-content;
+}
