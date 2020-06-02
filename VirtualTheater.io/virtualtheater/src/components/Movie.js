@@ -17,8 +17,8 @@ export default class Movie extends Component {
   async callApi() {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
-      const response2 = await axios.get(`/walter_api/v3/reviews`);
-      const response3 = await axios.get(`/walter_api/v3/accounts`);
+      const response2 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/reviews`);
+      const response3 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts`);
       
       
     let movie = response.data;
@@ -97,7 +97,7 @@ export default class Movie extends Component {
 
 async postDatabase(term,object) {
     try {
-      const response = await axios.post('/walter_api/v3/'+term,object);
+      const response = await axios.post('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/'+term,object);
       
       console.log(response.data);
       console.log(response);
@@ -112,7 +112,7 @@ async postDatabase(term,object) {
     console.log("This is running",id);
     try {
       //const response = await axios.delete('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v2/'+term+'/'+id);
-      const response = await axios.delete('/walter_api/v3/'+term+'/'+id);
+      const response = await axios.delete('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/'+term+'/'+id);
       
       console.log(response.data);
       console.log(response);

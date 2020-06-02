@@ -38,7 +38,7 @@ export default class Search extends Component {
 
 async postDatabase(term,object) {
     try {
-      const response = await axios.post('/walter_api/v2/'+term,object);
+      const response = await axios.post('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v2/'+term,object);
       
       console.log(response.data);
       console.log(response);

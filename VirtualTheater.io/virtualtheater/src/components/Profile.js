@@ -39,7 +39,7 @@ export default class Profile extends Component {
 
   async callApi() {
     try {
-        const response = await axios.get('/walter_api/v3/transactions');
+        const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/transactions');
         //console.log(response.data);
         {/* store api data in state */}
         let elements = response.data.map(movie => <img src={movie.image}/>);
@@ -86,7 +86,7 @@ export default class Profile extends Component {
 
   async postApi(object) {
     try {
-      const response = await axios.post('/walter_api/v3/accounts',object);
+      const response = await axios.post('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts',object);
       
       console.log(response.data);
       console.log(response);

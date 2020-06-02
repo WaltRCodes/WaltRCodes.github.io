@@ -23,7 +23,7 @@ export default class SignIn extends Component {
     }
     async callApi() {
         try {
-            const response = await axios.get('/walter_api/v3/accounts');
+            const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts');
             //console.log(response.data);
             {/* store api data in state */}
             this.setState({accounts:response.data});
