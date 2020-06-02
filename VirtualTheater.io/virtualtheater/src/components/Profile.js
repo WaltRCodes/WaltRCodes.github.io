@@ -109,7 +109,7 @@ export default class Profile extends Component {
   
   render() {
     return (
-        <div>
+        <div className="Movie">
             
             <div>
                 {this.state.message}

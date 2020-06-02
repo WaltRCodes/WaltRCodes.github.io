@@ -69,7 +69,7 @@ export default class Movie extends Component {
         <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>;
 
-    let reviewsHTML = reviews.map(review => <div id={review.id}>
+    let reviewsHTML = reviews.map(review => <div className="comments" id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
         <p>{users.filter(user => user.id===review.userId)[0].name}</p>
         <p>{review.rating}</p>
@@ -125,7 +125,7 @@ async postDatabase(term,object) {
 
   render() {
     return (
-      <div>
+      <div className="movie">
             <div>{this.state.movieHTML}</div>
             <h1>Check out what our others users have said</h1>
             <div>{this.state.reviewHTML}</div>
