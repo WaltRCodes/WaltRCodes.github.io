@@ -27,7 +27,8 @@ export default class SignUpPage  extends Component {
         "email": this.state.email,
         "password": this.state.password,
         "address": this.state.address,
-        "name": this.state.name
+        "name": this.state.name,
+        "balance":10000
     };
     
     this.postApi(user);

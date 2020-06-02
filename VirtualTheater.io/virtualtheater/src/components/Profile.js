@@ -42,7 +42,8 @@ export default class Profile extends Component {
         const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/transactions');
         //console.log(response.data);
         {/* store api data in state */}
-        let elements = response.data.map(movie => <img src={movie.image}/>);
+        let data = response.data.filter(movie => movie.userId === this.props.userId);
+        let elements = data.map(movie => <img src={movie.image}/>);
         this.setState({movies:response.data,movieHTML:elements});
     } catch (e) {
     console.log(e);
