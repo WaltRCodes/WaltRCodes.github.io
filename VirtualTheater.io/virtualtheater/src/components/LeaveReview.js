@@ -5,8 +5,9 @@ export default class LeaveReview extends Component {
         super(props);
         this.state = {
           isFillingOutForm: false,
-          rating:0,
-          description:''
+          rating:this.props.rating,
+          description:this.props.desc,
+          occured:false
 
         }
         {/*binds the function to the class*/}
@@ -18,9 +19,10 @@ export default class LeaveReview extends Component {
   }
   componentDidUpdate(){
     //console.log(document.getElementById('rating').value,document.getElementById('description').value);
-    if(this.state.isFillingOutForm){
+    if(this.state.isFillingOutForm&&!this.state.occured){
         document.getElementById('rating').value=this.props.rating;
         document.getElementById('desc').value=this.props.desc;
+        this.setState({occured:true});
     }
     
   }
@@ -39,6 +41,7 @@ export default class LeaveReview extends Component {
     this.setState(prevState => ({
         isFillingOutForm: !prevState.isFillingOutForm
     }));
+    
   }
   async postApi(object) {
     try {

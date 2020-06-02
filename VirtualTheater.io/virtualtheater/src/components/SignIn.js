@@ -40,8 +40,8 @@ export default class SignIn extends Component {
         // });
         let arrayIndex =this.state.accounts.findIndex(user => user.email===this.state.email&&user.password===this.state.password);
         if(arrayIndex!=-1){
-            console.log(this.state.accounts[arrayIndex].id);
-            //this.props.Allowed(this.state.accounts[arrayIndex].id);
+            console.log(this.state.accounts[arrayIndex]);
+            this.props.Allowed(this.state.accounts[arrayIndex]);
         } else{
             this.setState({error: <div>Sorry, no login was found</div>});
         }
