@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/virtualtheater/static/css/main.346f1bda.chunk.css",
+    "main.js": "/virtualtheater/static/js/main.79981d84.chunk.js",
+    "main.js.map": "/virtualtheater/static/js/main.79981d84.chunk.js.map",
+    "runtime-main.js": "/virtualtheater/static/js/runtime-main.60bbdc99.js",
+    "runtime-main.js.map": "/virtualtheater/static/js/runtime-main.60bbdc99.js.map",
+    "static/js/2.45dd4929.chunk.js": "/virtualtheater/static/js/2.45dd4929.chunk.js",
+    "static/js/2.45dd4929.chunk.js.map": "/virtualtheater/static/js/2.45dd4929.chunk.js.map",
+    "index.html": "/virtualtheater/index.html",
+    "precache-manifest.f12480190ea388610026f44413aa9507.js": "/virtualtheater/precache-manifest.f12480190ea388610026f44413aa9507.js",
+    "service-worker.js": "/virtualtheater/service-worker.js",
+    "static/css/main.346f1bda.chunk.css.map": "/virtualtheater/static/css/main.346f1bda.chunk.css.map",
+    "static/js/2.45dd4929.chunk.js.LICENSE.txt": "/virtualtheater/static/js/2.45dd4929.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.60bbdc99.js",
+    "static/js/2.45dd4929.chunk.js",
+    "static/css/main.346f1bda.chunk.css",
+    "static/js/main.79981d84.chunk.js"
+  ]
+}
