@@ -36,11 +36,11 @@ export default class Movie extends Component {
             <h4>{movie.title}</h4>
             <h5>{movie.release_date}</h5>
             <div>Runtime: {movie.runtime} mins</div>
-            <div>Genre: {movie.genres.map(genre => <p>{genre.name}</p>)}</div>
+            <div className="row" >Genre: {movie.genres.map(genre => <p> {genre.name} </p>)}</div>
             <div><a href={movie.homepage} target="_blank">Check out the website for {movie.title}</a></div>
             <p>{movie.overview}</p>
-            <div>Production provided by: {movie.production_companies.map(company => <p>{company.name}</p>)}</div>
-            <div>Produced in the following countries: {movie.production_countries.map(country => <p>{country.name}</p>)}</div>
+            <div className="row" >Production provided by: {movie.production_companies.map(company => <p> {company.name} </p>)}</div>
+            <div className="row" >Produced in the following countries: {movie.production_countries.map(country => <p> {country.name} </p>)}</div>
             </div>
         </div>
         <button onClick={() => {
@@ -63,13 +63,14 @@ export default class Movie extends Component {
             });
             console.log(this.props.balance-19.99);
             this.setState({purchase:<p>Congrats on your purchase!</p>});
+            alert("Congrats on your purchase!");
         } else {
                 this.setState({purchase:<p>You dont have the neccessary funds</p>});
             }
         }}>Buy the movie for $19.99</button>
         <div>{this.state.purchase}</div>
         <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
-        </div>;
+        <h3>Check out what our others users have said</h3></div>;
 
     let reviewsHTML = reviews.map(review => <div className="comments" id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
@@ -129,8 +130,8 @@ async postDatabase(term,object) {
     return (
       <div className="movie">
             <div>{this.state.movieHTML}</div>
-            <h1>Check out what our others users have said</h1>
-            <div>{this.state.reviewHTML}</div>
+            
+            <div className="movie">{this.state.reviewHTML}</div>
       </div>
       
     )

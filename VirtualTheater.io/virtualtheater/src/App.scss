@@ -33,6 +33,7 @@ $green: #20B2AA;
   background-color: aliceblue;
   display:flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .comments > *{
@@ -75,4 +76,9 @@ $green: #20B2AA;
 .main > form{
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.general{
+  background-color: $green;
+  color: white;
 }

@@ -80,21 +80,21 @@ export default class SignUpPage  extends Component {
                     onChange = {this.onChangeHandler}
                   />
                   <label>
-                    Password:
-                  </label>
-                  <input
-                    type="password"
-                    name="userPassword"
-                    placeholder="Password"
-                    onChange = {this.onChangeHandler}
-                  />
-                  <label>
                     Email:
                   </label>
                   <input
                     type="email"
                     name="email"
                     placeholder="email"
+                    onChange = {this.onChangeHandler}
+                  />
+                  <label>
+                    Password:
+                  </label>
+                  <input
+                    type="password"
+                    name="userPassword"
+                    placeholder="Password"
                     onChange = {this.onChangeHandler}
                   />
                   <label>

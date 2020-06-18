@@ -65,7 +65,7 @@ async postDatabase(term,object) {
 
   render() {
     return (
-      <div className="main">
+      <div className="main general">
             <h1>Check out this awesome selection of movies</h1>
             <div className="grid">{this.state.resultsHTML}</div>
       </div>
