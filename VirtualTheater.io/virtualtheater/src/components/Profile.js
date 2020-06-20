@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +44,7 @@ export default class Profile extends Component {
         //console.log(response.data);
         {/* store api data in state */}
         let data = response.data.filter(movie => movie.userId === this.props.userId);
-        let elements = data.map(movie => <img src={movie.image}/>);
+        let elements = data.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.movieId)} ><img src={movie.image}/></Link>);
         this.setState({movies:response.data,movieHTML:elements});
     } catch (e) {
     console.log(e);
@@ -110,8 +111,8 @@ export default class Profile extends Component {
   
   render() {
     return (
-        <div className="Movie">
-            
+        <div className="movie">
+            <h2>Edit your profile info here:</h2>
             <div>
                 {this.state.message}
                 <form>
@@ -169,7 +170,7 @@ export default class Profile extends Component {
                 </button>
                 </form>
                 </div>
-        <h1>Here are the movies you have purchased</h1>
+        <h2>Here are the movies you have purchased</h2>
     <div>{this.state.movieHTML}</div>
             
         </div>

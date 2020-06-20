@@ -26,23 +26,31 @@ export default class Movie extends Component {
     let reviews = response2.data.filter(review => review.movieId === movie.id);
 
     console.log(reviews);
-    console.log(response3.data);
-
+    console.log(movie);
+      console.log((Math.round(window.innerWidth/100)*100).toString());
     
-    let movieHTML = <div >
-        <div className="row">
-            <img src={"https://image.tmdb.org/t/p/w300"+movie.poster_path} />
-            <div className="main">
-            <h4>{movie.title}</h4>
+    let movieHTML = <div className="container" >
+        <div style={{background: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`, width: "100%", backgroundAttachment: "fixed",  backgroundPosition: "center",  backgroundRepeat: "no-repeat",  backgroundSize: "cover"}}>
+          <div className="header" >
+            <h1>{movie.title}</h1>
             <h5>{movie.release_date}</h5>
-            <div>Runtime: {movie.runtime} mins</div>
-            <div className="row" >Genre: {movie.genres.map(genre => <p> {genre.name} </p>)}</div>
-            <div><a href={movie.homepage} target="_blank">Check out the website for {movie.title}</a></div>
-            <p>{movie.overview}</p>
-            <div className="row" >Production provided by: {movie.production_companies.map(company => <p> {company.name} </p>)}</div>
-            <div className="row" >Produced in the following countries: {movie.production_countries.map(country => <p> {country.name} </p>)}</div>
-            </div>
+          </div>
+
         </div>
+        
+        <div className="row">
+            <div> <img src={"https://image.tmdb.org/t/p/w200"+movie.poster_path} /> </div>
+            
+            <div>
+              
+              <div>Runtime: {movie.runtime} mins</div>
+              <div className="multiples" >Genre: {movie.genres.map(genre => <p> {genre.name} </p>)}</div>
+              <div className="multiples" >Production provided by: {movie.production_companies.map(company => <p> {company.name} </p>)}</div>
+              <div className="multiples" >Produced in the following countries: {movie.production_countries.map(country => <p> {country.name} </p>)}</div>
+              <div><a href={movie.homepage} target="_blank">Check out the website for {movie.title}</a></div>
+              <p>{movie.overview}</p>
+              
+            
         <button onClick={() => {
             if(this.props.balance-19.99>0){
             this.postDatabase("transactions",{
@@ -50,7 +58,8 @@ export default class Movie extends Component {
                 "date": new Date().toUTCString(),
                 "image": "https://image.tmdb.org/t/p/w200"+movie.poster_path,
                 "price": 19.99,
-                "userId": this.props.userId
+                "userId": this.props.userId,
+                "movieId":this.props.id
                 });
             this.postDatabase("accounts",{
                 "id": this.props.userId,
@@ -59,7 +68,6 @@ export default class Movie extends Component {
                 "password": this.props.user.password,
                 "name": this.props.user.name,
                 "address": this.props.user.address
-
             });
             console.log(this.props.balance-19.99);
             this.setState({purchase:<p>Congrats on your purchase!</p>});
@@ -70,13 +78,17 @@ export default class Movie extends Component {
         }}>Buy the movie for $19.99</button>
         <div>{this.state.purchase}</div>
         <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
+        </div>
+        </div>
         <h3>Check out what our others users have said</h3></div>;
 
     let reviewsHTML = reviews.map(review => <div className="comments" id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
-        <p>{users.filter(user => user.id===review.userId)[0].name}</p>
+        <div>
+          <p>{users.filter(user => user.id===review.userId)[0].name}</p>
+          <p>{review.date}</p>
+        </div>
         <p>{review.rating}</p>
-        <p>{review.date}</p>
         <p>{review.description}</p>
         {(users.filter(user => user.id===review.userId)[0].id === this.props.userId) ? <div>
             

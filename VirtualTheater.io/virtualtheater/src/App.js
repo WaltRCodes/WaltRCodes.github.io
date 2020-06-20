@@ -37,7 +37,7 @@ render(){
             <BrowserRouter>
                 <Navbar />
                 <Route exact strict path="/" render={() => <div><Search capture={this.chooseMovie}/></div>} />
-                <Route path="/Profile" render={() => <div><Profile userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/></div>} />
+                <Route path="/Profile" render={() => <div><Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/></div>} />
                 <Route path="/Movie" render={() => <div><Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/></div>} />
                 <div className="main">
                   <h4>Information provided by</h4>

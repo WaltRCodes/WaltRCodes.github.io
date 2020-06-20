@@ -14,6 +14,13 @@ $green: #20B2AA;
   background-color: $green;
 }
 
+.header{
+  width: 100%;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .cell{
   grid-column: span 4;
@@ -33,7 +40,9 @@ $green: #20B2AA;
   background-color: aliceblue;
   display:flex;
   flex-direction: row;
+  justify-content: space-evenly;
   width: 100%;
+  border: thick 2px solid;
 }
 
 .comments > *{
@@ -58,21 +67,26 @@ $green: #20B2AA;
   padding-bottom: 30px;
   border-style: none none solid none;
 }
+.multiples{
+  display: flex;
+  flex-direction: row;
+}
 .row{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
+.row >div{
+  padding: 50px;
+}
 .main{
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'IBM Plex Serif';
 }
-.main > button, input{
-  width: 100%;
-}
+
 .main > form{
   padding-top: 20px;
   padding-bottom: 20px;
@@ -81,4 +95,11 @@ $green: #20B2AA;
 .general{
   background-color: $green;
   color: white;
+}
+
+.container{
+  width: "100%";
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
