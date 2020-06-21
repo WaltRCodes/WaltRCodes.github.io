@@ -40,8 +40,7 @@ render(){
                 <Route path="/Profile" render={() => <div><Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/></div>} />
                 <Route path="/Movie" render={() => <div><Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} /></div>} />
                 <div className="main">
-                  <h4>Information provided by</h4>
-                  <img alt="themoviedb" width="300px" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg"/>
+                  <h4>Information provided by TheMoviedb</h4>
                 </div>
             </BrowserRouter>
             
