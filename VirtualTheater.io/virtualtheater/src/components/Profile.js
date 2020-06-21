@@ -111,11 +111,11 @@ export default class Profile extends Component {
   
   render() {
     return (
-        <div className="movie">
-            <h2>Edit your profile info here:</h2>
-            <div>
+        <div className="movie spacing">
+            <h3>{this.props.userName}, edit your profile info here:</h3>
+            <div className="spacing">
                 {this.state.message}
-                <form>
+                <form  className="spacing">
                 <label>
                         Name:
                     </label>
@@ -170,8 +170,8 @@ export default class Profile extends Component {
                 </button>
                 </form>
                 </div>
-        <h2>Here are the movies you have purchased</h2>
-    <div>{this.state.movieHTML}</div>
+        <h3>Here are the movies you have purchased</h3>
+    <div  className="spacing">{this.state.movieHTML}</div>
             
         </div>
       

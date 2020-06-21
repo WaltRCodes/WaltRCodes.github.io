@@ -32,7 +32,7 @@ export default class SignUpPage  extends Component {
     };
     
     this.postApi(user);
-    this.setState({message:<p>Congrats, your profile was created successfully</p>});
+    this.setState({message:<p>Congrats, your profile was created successfully<Link to="/">Click here to Sign In</Link></p>});
   };
 
   onChangeHandler = (event) => {

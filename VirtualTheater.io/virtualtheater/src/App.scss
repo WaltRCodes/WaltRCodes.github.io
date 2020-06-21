@@ -1,8 +1,18 @@
-$green: #20B2AA;
+$green: #6DDEA0;
 
 *{
   margin:0;
   padding:0;
+  
+}
+
+img{
+  border-radius: 20px;
+}
+
+button{
+  border-radius: 20px;
+  padding:5px;
 }
 
 .grid{
@@ -12,6 +22,7 @@ $green: #20B2AA;
   grid-gap: 1em;
   padding-top: 30px;
   background-color: $green;
+  font-family: 'Corben';
 }
 
 .header{
@@ -20,6 +31,7 @@ $green: #20B2AA;
   display:flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Corben';
 }
 
 .cell{
@@ -30,6 +42,7 @@ $green: #20B2AA;
   transition: all 1s;
   height:300px;
   overflow: hidden;
+  font-family: 'Corben';
 }
 
 .cell:hover{
@@ -43,6 +56,7 @@ $green: #20B2AA;
   justify-content: space-evenly;
   width: 100%;
   border: thick 2px solid;
+  border-radius: 20px;
 }
 
 .comments > *{
@@ -55,17 +69,32 @@ $green: #20B2AA;
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: aquamarine;
+  background-color: $green;
+  font-family:'Nobile';
+  font-weight: 500;
+}
+.spacing{
+  padding-top: 1vw;
+  padding-bottom: 1vw;
 }
 
 .nav-bar{
   display: flex;
   flex-direction: row;
   font-size: larger;
+  font-weight: bolder;
   justify-content: space-evenly;
   padding-top: 25px;
   padding-bottom: 30px;
   border-style: none none solid none;
+  font-family: 'Corben';
+  background-color: #20B2AA;
+}
+a {
+  color: black;
+}
+a:hover {
+   color: #00F
 }
 .multiples{
   display: flex;
@@ -84,7 +113,8 @@ $green: #20B2AA;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'IBM Plex Serif';
+  padding-top: 10vw;
+  font-family: 'Corben';
 }
 
 .main > form{
@@ -93,8 +123,13 @@ $green: #20B2AA;
 }
 
 .general{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $green;
   color: white;
+  font-family:'Nobile';
+  padding-top: 2vw;
 }
 
 .container{
@@ -102,4 +137,5 @@ $green: #20B2AA;
   display:flex;
   flex-direction: column;
   align-items: center;
+  font-family:'Nobile';
 }

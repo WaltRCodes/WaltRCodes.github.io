@@ -44,9 +44,9 @@ export default class Movie extends Component {
             <div>
               
               <div>Runtime: {movie.runtime} mins</div>
-              <div className="multiples" >Genre: {movie.genres.map(genre => <p> {genre.name} </p>)}</div>
-              <div className="multiples" >Production provided by: {movie.production_companies.map(company => <p> {company.name} </p>)}</div>
-              <div className="multiples" >Produced in the following countries: {movie.production_countries.map(country => <p> {country.name} </p>)}</div>
+              <div className="multiples" >Genre: {movie.genres.map(genre => <p>&nbsp; {genre.name} &nbsp;</p>)}</div>
+              <div className="multiples" >Production provided by: {movie.production_companies.map(company => <p>&nbsp; {company.name} &nbsp;</p>)}</div>
+              <div className="multiples" >Produced in the following countries: {movie.production_countries.map(country => <p>&nbsp; {country.name} &nbsp;</p>)}</div>
               <div><a href={movie.homepage} target="_blank">Check out the website for {movie.title}</a></div>
               <p>{movie.overview}</p>
               
@@ -88,7 +88,7 @@ export default class Movie extends Component {
           <p>{users.filter(user => user.id===review.userId)[0].name}</p>
           <p>{review.date}</p>
         </div>
-        <p>{review.rating}</p>
+        <p>{review.rating} Stars</p>
         <p>{review.description}</p>
         {(users.filter(user => user.id===review.userId)[0].id === this.props.userId) ? <div>
             
@@ -143,7 +143,7 @@ async postDatabase(term,object) {
       <div className="movie">
             <div>{this.state.movieHTML}</div>
             
-            <div className="movie">{this.state.reviewHTML}</div>
+            <div>{this.state.reviewHTML}</div>
       </div>
       
     )
