@@ -21,7 +21,7 @@ export default class Search extends Component {
       
       console.log(response.data);
     let elements = response.data.results.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.id)} >
-    <div style={{background: `url("https://image.tmdb.org/t/p/w200${movie.poster_path}") no-repeat`}}><div className="cell"><h4>{movie.title}</h4><h5>{movie.release_date}</h5><p>{movie.overview}</p></div></div>
+    <div style={{background: `url("https://image.tmdb.org/t/p/w200${movie.poster_path}") no-repeat`}}><div className="cell"><h5>{movie.release_date}</h5><p>{movie.overview}</p></div></div>
     </Link>);
       this.setState({
         resultsHTML: elements

@@ -7,17 +7,19 @@ $green: #6DDEA0;
 }
 
 img{
-  border-radius: 20px;
+  border-style: solid;
 }
 
 button{
   border-radius: 20px;
-  padding:5px;
+  padding:10px;
+  margin:10px;
+  border-style: solid;
 }
 
 .grid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   width: 100%;
   grid-gap: 1em;
   padding-top: 30px;
@@ -27,15 +29,16 @@ button{
 
 .header{
   width: 100%;
-  color:white;
   display:flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Corben';
+  background-color: rgba(0, 0, 0, 0.3);
+  color:white;
 }
 
 .cell{
-  grid-column: span 4;
+  grid-column: span 1;
   background-color: aliceblue;
   width: 200px;
   opacity: 0%;
@@ -91,10 +94,10 @@ button{
   background-color: #20B2AA;
 }
 a {
-  color: black;
+  text-decoration: none;
 }
 a:hover {
-   color: #00F
+  text-decoration: none;
 }
 .multiples{
   display: flex;
@@ -127,7 +130,6 @@ a:hover {
   flex-direction: column;
   align-items: center;
   background-color: $green;
-  color: white;
   font-family:'Nobile';
   padding-top: 2vw;
 }

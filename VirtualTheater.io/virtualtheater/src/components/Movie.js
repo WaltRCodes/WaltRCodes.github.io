@@ -34,16 +34,17 @@ export default class Movie extends Component {
           <div className="header" >
             <h1>{movie.title}</h1>
             <h5>{movie.release_date}</h5>
+            <div>{movie.runtime} mins</div>
           </div>
 
         </div>
         
         <div className="row">
-            <div> <img src={"https://image.tmdb.org/t/p/w200"+movie.poster_path} /> </div>
+            <div> <img src={"https://image.tmdb.org/t/p/w400"+movie.poster_path} /> </div>
             
             <div>
               
-              <div>Runtime: {movie.runtime} mins</div>
+              
               <div className="multiples" >Genre: {movie.genres.map(genre => <p>&nbsp; {genre.name} &nbsp;</p>)}</div>
               <div className="multiples" >Production provided by: {movie.production_companies.map(company => <p>&nbsp; {company.name} &nbsp;</p>)}</div>
               <div className="multiples" >Produced in the following countries: {movie.production_countries.map(country => <p>&nbsp; {country.name} &nbsp;</p>)}</div>
