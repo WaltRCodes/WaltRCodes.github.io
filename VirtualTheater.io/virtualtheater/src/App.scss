@@ -17,13 +17,16 @@ button{
   border-style: solid;
 }
 
+.alternative-grid{
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 100px;
+}
+
 .grid{
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  width: 100%;
   grid-gap: 1em;
   padding-top: 30px;
-  background-color: $green;
   font-family: 'Corben';
 }
 
@@ -46,6 +49,13 @@ button{
   height:300px;
   overflow: hidden;
   font-family: 'Corben';
+  
+}
+.cell > *{
+  padding:10px;
+  line-height: 20px;
+  padding-left: 18px;
+  padding-right: 13px;
 }
 
 .cell:hover{
@@ -57,7 +67,6 @@ button{
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 100%;
   border: thick 2px solid;
   border-radius: 20px;
 }
@@ -69,7 +78,6 @@ button{
 .movie{
   display:flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   justify-content: center;
   background-color: $green;

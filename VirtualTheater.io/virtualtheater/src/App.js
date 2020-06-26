@@ -32,7 +32,7 @@ chooseMovie(movieID){
 }
 render(){
   return (
-    <div>
+    <div className="alternative-grid">
       {this.state.signedIn ?
             <BrowserRouter>
                 <Navbar />
