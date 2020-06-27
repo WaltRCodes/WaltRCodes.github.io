@@ -14,20 +14,19 @@ button{
   border-radius: 20px;
   padding:10px;
   margin:10px;
-  border-style: solid;
+  border-style: none;
 }
 
 .alternative-grid{
   display: grid;
-  grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 100px;
+  grid-template-columns: 100px repeat(10,1fr) 100px;
 }
 
 .grid{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fill,200px) ;
   grid-gap: 1em;
   padding-top: 30px;
-  font-family: 'Corben';
 }
 
 .header{
@@ -35,7 +34,6 @@ button{
   display:flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Corben';
   background-color: rgba(0, 0, 0, 0.3);
   color:white;
 }
@@ -48,7 +46,6 @@ button{
   transition: all 1s;
   height:300px;
   overflow: hidden;
-  font-family: 'Corben';
   
 }
 .cell > *{
@@ -80,8 +77,6 @@ button{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: $green;
-  font-family:'Nobile';
   font-weight: 500;
 }
 .spacing{
@@ -90,16 +85,16 @@ button{
 }
 
 .nav-bar{
+  grid-column-start: 8;
+  grid-column-end: 12;
   display: flex;
   flex-direction: row;
   font-size: larger;
   font-weight: bolder;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding-top: 25px;
   padding-bottom: 30px;
   border-style: none none solid none;
-  font-family: 'Corben';
-  background-color: #20B2AA;
 }
 a {
   text-decoration: none;
@@ -121,11 +116,9 @@ a:hover {
   padding: 50px;
 }
 .main{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  grid-column-start: 2;
+  grid-column-end: 12;
   padding-top: 10vw;
-  font-family: 'Corben';
 }
 
 .main > form{
@@ -134,11 +127,9 @@ a:hover {
 }
 
 .general{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $green;
-  font-family:'Nobile';
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row-start: 2;
   padding-top: 2vw;
 }
 
@@ -147,5 +138,4 @@ a:hover {
   display:flex;
   flex-direction: column;
   align-items: center;
-  font-family:'Nobile';
 }
