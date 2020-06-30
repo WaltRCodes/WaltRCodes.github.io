@@ -38,7 +38,7 @@ render(){
                 <Navbar />
                 <Route exact strict path="/" render={() => <Search capture={this.chooseMovie} userName={this.state.user.name}/>} />
                 <Route path="/Profile" render={() => <Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/>} />
-                <Route path="/Movie" render={() => <Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} />} />
+                <Route path="/Movie" render={() => <Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/>} />
                 <div className="main">
                   <h4>Information provided by TheMoviedb</h4>
                 </div>

@@ -73,11 +73,13 @@ button{
 }
 
 .movie{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row-start: 2;
   justify-content: center;
   font-weight: 500;
+  padding-top: 10px;
+  font-size: larger;
 }
 .spacing{
   padding-top: 1vw;
@@ -106,14 +108,74 @@ a:hover {
   display: flex;
   flex-direction: row;
 }
+.multiples>ul>li{
+  list-style: none;
+}
 .row{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
-.row >div{
-  padding: 50px;
+.poster{
+  grid-area: poster;
+  
+}
+#post{
+  width:70%;
+  padding:50px;
+}
+.info{
+  grid-area: info;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "title title title"
+    "description description description"
+    "buy buy post"
+    "genre production countries";
+
+}
+.title{
+  grid-area: title;
+  font-size: larger;
+}
+
+.description{
+  grid-area: description;
+  font-size: large;
+}
+
+.buy{
+  grid-area: buy;
+  padding-right: 20px;
+}
+
+.post{
+  grid-area: post;
+  padding-left: 20px;
+}
+
+.genre{
+  grid-area: genre;
+}
+
+.production{
+  grid-area: production;
+}
+
+.countries{
+  grid-area: countries;
+}
+
+.info > div > button{
+  font-size: large;
+  width: 100%;
+}
+.info > div > div > button{
+  font-size: large;
+  width: 100%;
 }
 .main{
   grid-column-start: 2;
@@ -134,8 +196,17 @@ a:hover {
 }
 
 .container{
-  width: "100%";
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row-start: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "fade fade"
+    "poster info"
+    "review review";
+}
+.review{
+  grid-area: review;
 }

@@ -30,7 +30,7 @@ export default class Movie extends Component {
       console.log((Math.round(window.innerWidth/100)*100).toString());
     
     let movieHTML = <div className="container" >
-        <div style={{background: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`, width: "100%", backgroundAttachment: "fixed",  backgroundPosition: "center",  backgroundRepeat: "no-repeat",  backgroundSize: "cover"}}>
+        <div style={{background: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`, width: "100%", backgroundAttachment: "fixed",  backgroundPosition: "center",  backgroundRepeat: "no-repeat",  backgroundSize: "cover", gridArea:"fade"}}>
           <div className="header" >
             <h1>{movie.title}</h1>
             <h5>{movie.release_date}</h5>
@@ -39,49 +39,50 @@ export default class Movie extends Component {
 
         </div>
         
-        <div className="row">
-            <div> <img src={"https://image.tmdb.org/t/p/w400"+movie.poster_path} /> </div>
+            <div className="poster"> <img id="post" src={"https://image.tmdb.org/t/p/w400"+movie.poster_path} /> </div>
             
-            <div>
+            <div className="info">
               
+              <div className="title"><a href={movie.homepage} target="_blank">{movie.title}</a></div>
+              <p className="description">{movie.overview}</p>
               
-              <div className="multiples" >Genre: {movie.genres.map(genre => <p>&nbsp; {genre.name} &nbsp;</p>)}</div>
-              <div className="multiples" >Production provided by: {movie.production_companies.map(company => <p>&nbsp; {company.name} &nbsp;</p>)}</div>
-              <div className="multiples" >Produced in the following countries: {movie.production_countries.map(country => <p>&nbsp; {country.name} &nbsp;</p>)}</div>
-              <div><a href={movie.homepage} target="_blank">Check out the website for {movie.title}</a></div>
-              <p>{movie.overview}</p>
-              
-            
-        <button onClick={() => {
-            if(this.props.balance-19.99>0){
-            this.postDatabase("transactions",{
-                "title": movie.title,
-                "date": new Date().toUTCString(),
-                "image": "https://image.tmdb.org/t/p/w200"+movie.poster_path,
-                "price": 19.99,
-                "userId": this.props.userId,
-                "movieId":this.props.id
+              <div className="buy">
+            <button onClick={() => {
+                if(this.props.balance-19.99>0){
+                this.postDatabase("transactions",{
+                    "title": movie.title,
+                    "date": new Date().toUTCString(),
+                    "image": "https://image.tmdb.org/t/p/w200"+movie.poster_path,
+                    "price": 19.99,
+                    "userId": this.props.userId,
+                    "movieId":this.props.id
+                    });
+                this.postDatabase("accounts",{
+                    "id": this.props.userId,
+                    "balance": this.props.balance-19.99,
+                    "email": this.props.user.email,
+                    "password": this.props.user.password,
+                    "name": this.props.user.name,
+                    "address": this.props.user.address
                 });
-            this.postDatabase("accounts",{
-                "id": this.props.userId,
-                "balance": this.props.balance-19.99,
-                "email": this.props.user.email,
-                "password": this.props.user.password,
-                "name": this.props.user.name,
-                "address": this.props.user.address
-            });
-            console.log(this.props.balance-19.99);
-            this.setState({purchase:<p>Congrats on your purchase!</p>});
-            alert("Congrats on your purchase!");
-        } else {
-                this.setState({purchase:<p>You dont have the neccessary funds</p>});
-            }
-        }}>Buy the movie for $19.99</button>
-        <div>{this.state.purchase}</div>
-        <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
+                console.log(this.props.balance-19.99);
+                this.setState({purchase:<p>Congrats on your purchase!</p>});
+                alert("Congrats on your purchase!");
+            } else {
+                    this.setState({purchase:<p>You dont have the neccessary funds</p>});
+                }
+            }}>Buy the movie for $19.99</button>
+            {this.state.purchase}
         </div>
+        <div className="post">
+          <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>
-        <h3>Check out what our others users have said</h3></div>;
+        <div className="multiples genre" ><ul><li>Genre: </li>{movie.genres.map(genre => <li>{genre.name}</li>)}</ul></div>
+              <div className="multiples production" ><ul> <li>Produced by:</li>{movie.production_companies.map(company => <li>{company.name}</li>)}</ul></div>
+              <div className="multiples countries" ><ul><li>Produced in:</li>{movie.production_countries.map(country => <li>{country.name}</li>)}</ul></div>
+        </div>
+        
+        <h3 className="review">Check out what our others users have said</h3></div>;
 
     let reviewsHTML = reviews.map(review => <div className="comments" id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
@@ -142,7 +143,7 @@ async postDatabase(term,object) {
   render() {
     return (
       <div className="movie">
-            <div>{this.state.movieHTML}</div>
+            {this.state.movieHTML}
             
             <div>{this.state.reviewHTML}</div>
       </div>
