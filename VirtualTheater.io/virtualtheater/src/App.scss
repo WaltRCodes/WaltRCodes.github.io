@@ -140,6 +140,7 @@ a:hover {
 .title{
   grid-area: title;
   font-size: larger;
+  padding-top: 20px;
 }
 
 .description{
@@ -149,24 +150,25 @@ a:hover {
 
 .buy{
   grid-area: buy;
-  padding-right: 20px;
 }
 
 .post{
   grid-area: post;
-  padding-left: 20px;
 }
 
 .genre{
   grid-area: genre;
+  font-size: medium;
 }
 
 .production{
   grid-area: production;
+  font-size: medium;
 }
 
 .countries{
   grid-area: countries;
+  font-size: medium;
 }
 
 .info > div > button{
