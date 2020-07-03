@@ -33,8 +33,7 @@ export default class Movie extends Component {
         <div style={{background: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`, width: "100%", backgroundAttachment: "fixed",  backgroundPosition: "center",  backgroundRepeat: "no-repeat",  backgroundSize: "cover", gridArea:"fade"}}>
           <div className="header" >
             <h1>{movie.title}</h1>
-            <h5>{movie.release_date}</h5>
-            <div>{movie.runtime} mins</div>
+            <h5>{movie.release_date.substring(0, 4)} {movie.runtime} mins</h5>
           </div>
 
         </div>
@@ -43,8 +42,9 @@ export default class Movie extends Component {
             
             <div className="info">
               
-              <div className="title"><a href={movie.homepage} target="_blank">{movie.title}</a></div>
+              
               <p className="description">{movie.overview}</p>
+              <div className="title"><a href={movie.homepage} target="_blank">Click here to learn more</a></div>
               
               <div className="buy">
             <button onClick={() => {
