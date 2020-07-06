@@ -77,9 +77,9 @@ export default class Movie extends Component {
         <div className="post">
           <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>
-        <div className="multiples genre" ><ul><li>Genre: </li>{movie.genres.map(genre => <li>{genre.name}</li>)}</ul></div>
-              <div className="multiples production" ><ul> <li>Produced by:</li>{movie.production_companies.map(company => <li>{company.name}</li>)}</ul></div>
-              <div className="multiples countries" ><ul><li>Produced in:</li>{movie.production_countries.map(country => <li>{country.name}</li>)}</ul></div>
+        <div className="multiples genre" ><ul><li className="column-head" >GENRE </li>{movie.genres.map(genre => <li>{genre.name}</li>)}</ul></div>
+              <div className="multiples production" ><ul> <li  className="column-head" >PRODUCED BY</li>{movie.production_companies.map(company => <li>{company.name}</li>)}</ul></div>
+              <div className="multiples countries" ><ul><li  className="column-head" >PRODUCED IN</li>{movie.production_countries.map(country => <li>{country.name}</li>)}</ul></div>
         </div>
         
         <h3 className="review">Check out what our others users have said</h3></div>;

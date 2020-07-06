@@ -62,12 +62,11 @@ button{
 }
 
 .comments{
-  background-color: aliceblue;
+  background-color: #FCFCFC;
   display:flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  border: thick 2px solid;
-  border-radius: 20px;
+  justify-content: space-between;
+  border: none;
 }
 
 .comments > *{
@@ -101,6 +100,7 @@ button{
 }
 a {
   text-decoration: none;
+  color:#2F4F4F;
 }
 a:hover {
   text-decoration: none;
@@ -147,8 +147,11 @@ a:hover {
 .description{
   grid-area: description;
   font-size: large;
+  font-weight: normal;
 }
-
+.column-head{
+  font-weight: bold;
+}
 .buy{
   grid-area: buy;
 }
