@@ -90,7 +90,7 @@ export default class Movie extends Component {
           <p>{users.filter(user => user.id===review.userId)[0].name}</p>
           <p>{review.date}</p>
         </div>
-        <p>{review.rating} Stars</p>
+        <div>{new Array(review.rating).fill(<span>&#9733;</span>)}</div>
         <p>{review.description}</p>
         {(users.filter(user => user.id===review.userId)[0].id === this.props.userId) ? <div>
             

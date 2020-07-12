@@ -184,11 +184,14 @@ a:hover {
   width: 100%;
 }
 .main{
-  grid-column-start: 2;
-  grid-column-end: 12;
+  grid-column-start: 6;
+  grid-column-end: 8;
   padding-top: 10vw;
 }
-
+label{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .main > form{
   padding-top: 20px;
   padding-bottom: 20px;
