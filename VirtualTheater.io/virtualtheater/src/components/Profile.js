@@ -23,6 +23,7 @@ export default class Profile extends Component {
   }
   componentDidMount(){
       this.callApi();
+      this.callUserApi();
   }
 
   componentDidUpdate(){
@@ -44,11 +45,31 @@ export default class Profile extends Component {
         //console.log(response.data);
         {/* store api data in state */}
         let data = response.data.filter(movie => movie.userId === this.props.userId);
-        let elements = data.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.movieId)} ><img src={movie.image}/></Link>);
+    let elements = data.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.movieId)} ><img src={movie.image}/><p>Bought on {movie.date.substring(0, 17)} for ${movie.price}</p></Link>);
         this.setState({movies:response.data,movieHTML:elements});
     } catch (e) {
     console.log(e);
     }
+}
+
+async callUserApi() {
+  try {
+      const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts/'+this.props.userId);
+      //console.log(response.data);
+      {/* store api data in state */}
+      let data = response.data;
+      console.log(response.data);
+      this.setState({
+        name: data.name,
+        password: data.password,
+        email: data.email,
+        address: data.address,
+        balance: data.balance,
+        occured:false
+      });
+  } catch (e) {
+  console.log(e);
+  }
 }
   
 
@@ -65,7 +86,7 @@ export default class Profile extends Component {
     };
     
     this.postApi(user);
-    this.setState(prevState => ({message:<p>Congrats, your profile was updated successfully</p>, isFillingOutForm: !prevState.isFillingOutForm}));
+    this.setState(prevState => ({message:<p>Congrats, your profile was updated successfully.</p>, isFillingOutForm: !prevState.isFillingOutForm}));
    
   };
 
