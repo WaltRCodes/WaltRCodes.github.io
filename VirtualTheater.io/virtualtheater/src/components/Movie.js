@@ -33,7 +33,7 @@ export default class Movie extends Component {
         <div style={{background: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`, width: "100%", backgroundAttachment: "fixed",  backgroundPosition: "center",  backgroundRepeat: "no-repeat",  backgroundSize: "cover", gridArea:"fade"}}>
           <div className="header" >
             <h1>{movie.title}</h1>
-            <h5>{movie.release_date.substring(0, 4)} {movie.runtime} mins</h5>
+            <h5>({movie.release_date.substring(0, 4)}) {movie.runtime} mins</h5>
           </div>
 
         </div>
@@ -44,7 +44,7 @@ export default class Movie extends Component {
               
               
               <p className="description">{movie.overview}</p>
-              <div className="title"><a href={movie.homepage} target="_blank">Click here to learn more</a></div>
+              <div className="title"><a href={movie.homepage} target="_blank">Check out the movie website to learn more</a></div>
               
               <div className="buy">
             <button onClick={() => {
@@ -82,16 +82,18 @@ export default class Movie extends Component {
               <div className="multiples countries" ><ul><li  className="column-head" >PRODUCED IN</li>{movie.production_countries.map(country => <li>{country.name}</li>)}</ul></div>
         </div>
         
-        <h3 className="review">Check out what our others users have said</h3></div>;
+        <h3 className="review">Reviews</h3></div>;
 
     let reviewsHTML = reviews.map(review => <div className="comments" id={review.id}>
         {console.log(users.filter(user => user.id===review.userId))}
         <div>
           <p>{users.filter(user => user.id===review.userId)[0].name}</p>
-          <p>{review.date}</p>
+          <div>{new Array(review.rating).fill(<span>&#9733;</span>)}</div>
+          <p>{review.date.substring(0,16)}</p>
+          <p>{review.description}</p>
         </div>
-        <div>{new Array(review.rating).fill(<span>&#9733;</span>)}</div>
-        <p>{review.description}</p>
+        
+        
         {(users.filter(user => user.id===review.userId)[0].id === this.props.userId) ? <div>
             
             <LeaveReview bttonText="Edit your post" filling={true} userId={this.props.userId} reviewId={review.id} movieId={this.props.id} rating={review.rating} desc={review.description}/>

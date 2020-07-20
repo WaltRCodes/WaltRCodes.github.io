@@ -13,7 +13,8 @@ img{
 button{
   border-radius: 20px;
   padding:10px;
-  margin:10px;
+  margin-top:10px;
+  margin-bottom:10px;
   border-style: none;
 }
 
@@ -36,8 +37,8 @@ button{
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   color:white;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .cell{
@@ -46,8 +47,9 @@ button{
   width: 200px;
   opacity: 0%;
   transition: all 1s;
-  height:300px;
+  height: 300px;
   overflow: hidden;
+  
   
 }
 .cell > *{
@@ -55,6 +57,13 @@ button{
   line-height: 20px;
   padding-left: 18px;
   padding-right: 13px;
+  text-overflow: ellipsis;
+}
+
+.cell > p{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 194px;
 }
 
 .cell:hover{
@@ -63,23 +72,22 @@ button{
 
 .comments{
   background-color: #FCFCFC;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
   border: none;
 }
 
 .comments > *{
   padding: 10px;
+  padding-left: 50px;
+  padding-bottom: 0;
 }
 
 .movie{
   grid-column-start: 2;
   grid-column-end: 12;
-  grid-row-start: 2;
+  grid-row-start: 3;
   justify-content: center;
   font-weight: 500;
-  padding-top: 10px;
+  padding-top: 35px;
   font-size: larger;
 }
 .spacing{
@@ -91,12 +99,22 @@ button{
   grid-column-start: 8;
   grid-column-end: 12;
   display: flex;
-  flex-direction: row;
-  font-size: medium;
-  justify-content: space-between;
-  padding-top: 25px;
-  padding-bottom: 30px;
+  flex-direction: row-reverse;
+  font-size: smaller;
+  margin-top: 20px;
   border-style: none;
+  grid-row-start: 2;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+}
+.nav-bar > a{
+  padding-left: 10px;
+}
+.space{
+  width: 100px;
+  height: 5px;
+  background-color: blue($color: #000000);
 }
 a {
   text-decoration: none;
@@ -129,6 +147,7 @@ a:hover {
 .info{
   grid-area: info;
   padding-top: 44px;
+  grid-row: span 4;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -200,22 +219,44 @@ label{
 .general{
   grid-column-start: 2;
   grid-column-end: 12;
-  grid-row-start: 2;
+  grid-row-start: 3;
   padding-top: 2vw;
 }
 
 .container{
   grid-column-start: 2;
   grid-column-end: 12;
-  grid-row-start: 2;
+  grid-row-start: 3;
   display: grid;
   grid-template-columns: 1fr 1fr ;
   grid-template-rows: auto;
   grid-template-areas: 
     "fade fade"
     "poster info"
+    "poster info"
+    "poster info"
+    "poster info"
+    "poster info"
     "review review";
 }
 .review{
   grid-area: review;
+  padding-left: 50px;;
+}
+.status{
+  grid-column-start: 10;
+  grid-column-end: 12;
+  font-size: small;
+  text-align: right;
+  color:#2F4F4F;
+}
+
+.footer{
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row-start: 4;
+}
+input{
+  border-style: none;
+  background-color:white;
 }

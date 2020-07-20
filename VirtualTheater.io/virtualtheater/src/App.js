@@ -35,12 +35,13 @@ render(){
     <div className="alternative-grid">
       {this.state.signedIn ?
             <BrowserRouter>
-                <Navbar />
+                <div className="status">Logged in as {this.state.user.name}</div>
+                <Navbar userName={this.state.user.name} />
                 <Route exact strict path="/" render={() => <Search capture={this.chooseMovie} userName={this.state.user.name}/>} />
                 <Route path="/Profile" render={() => <Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/>} />
                 <Route path="/Movie" render={() => <Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/>} />
-                <div className="main">
-                  <p>Information provided by TheMoviedb</p>
+                <div className="footer">
+                  <p>Information provided by TheMoviedb © 2020 Walter Rada</p>
                 </div>
             </BrowserRouter>
             
