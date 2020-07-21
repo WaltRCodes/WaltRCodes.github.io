@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Movie from './components/Movie';
 import {
   BrowserRouter,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import './App.scss';
 import Navbar from './components/Navbar';
@@ -44,6 +45,7 @@ render(){
                 <div className="status">Logged in as {this.state.user.name}</div>
                 <Navbar userName={this.state.user.name} />
                 <Route exact strict path="/" render={() => <Search getFilter={this.genreFilter} filter={this.state.filter} filterName={this.state.filterName} capture={this.chooseMovie} userName={this.state.user.name}/>} />
+                <Route path="/SignIn" render={() => <Search getFilter={this.genreFilter} filter={this.state.filter} filterName={this.state.filterName} capture={this.chooseMovie} userName={this.state.user.name}/>} />
                 <Route path="/Profile" render={() => <Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/>} />
                 <Route path="/Movie" render={() => <Movie getFilter={this.genreFilter} id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/>} />
                 <div className="footer">
@@ -53,7 +55,12 @@ render(){
             
         :
             <BrowserRouter>
-                <Route exact strict path="/" render={() => <SignIn Allowed={this.signingIn}/>} />
+                <div className="status"><Link to="/SignIn">Sign in</Link> or <Link to="/SignUp">Sign up</Link></div>
+                <Navbar userName={"Guest"} />
+                <Route exact strict path="/" render={() => <Search getFilter={this.genreFilter} filter={this.state.filter} filterName={this.state.filterName} capture={this.chooseMovie} userName={"Guest"}/>} />
+                <Route path="/Profile" render={() => <div className="spacing"><h1>Please create an account and log in.</h1></div>} />
+                <Route path="/Movie" render={() => <Movie getFilter={this.genreFilter} id={this.state.movieId} userId={0} balance={0} user={this.state.user}/>} />
+                <Route exact strict path="/SignIn" render={() => <SignIn Allowed={this.signingIn}/>} />
                 <Route path="/SignUp" render={() => <SignUp/>} />
             </BrowserRouter>
         }

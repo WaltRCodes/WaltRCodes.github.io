@@ -78,6 +78,7 @@ export default class Movie extends Component {
                 alert("Congrats on your purchase!");
             } else {
                     this.setState({purchase:<p>You dont have the neccessary funds</p>});
+                    alert("You dont have the neccessary funds or are not logged in");
                 }
             }}>Buy the movie for $19.99</button>
             <button onClick={() => {
@@ -103,6 +104,7 @@ export default class Movie extends Component {
                 alert("Congrats on your purchase! You have 30 days to watch this movie.");
             } else {
                     this.setState({purchase:<p>You dont have the neccessary funds</p>});
+                    alert("You dont have the neccessary funds or are not logged in");
                 }
             }}>Rent the movie for $9.99</button>
             {this.state.purchase}
