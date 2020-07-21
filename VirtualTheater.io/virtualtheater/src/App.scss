@@ -93,8 +93,12 @@ button{
 .spacing{
   padding-top: 1vw;
   padding-bottom: 1vw;
+  grid-column-start: 2;
+  grid-column-end: 12;
 }
-
+.profile{
+  width:20%;
+}
 .nav-bar{
   grid-column-start: 8;
   grid-column-end: 12;
@@ -127,7 +131,7 @@ a:hover {
   display: flex;
   flex-direction: row;
 }
-.multiples>ul>li{
+*>li{
   list-style: none;
 }
 .row{

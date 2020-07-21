@@ -7,7 +7,8 @@ export default class Search extends Component {
     this.state = {
       searchTerm: "",
       resultsHTML:'',
-      movies:[]
+      movies:[],
+      filter: null
 
          
     }
@@ -19,7 +20,12 @@ export default class Search extends Component {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_KEY}`);
       
+      
       console.log(response.data);
+      console.log(this.props.filter);
+      if(this.props.filter!=null){
+        response.data.results = response.data.results.filter(result => result.genre_ids.findIndex((element) => element === this.props.filter)!=-1);
+      }
     let elements = response.data.results.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.id)} >
     <div style={{background: `url("https://image.tmdb.org/t/p/w200${movie.poster_path}") no-repeat`}}><div className="cell"><h5>{movie.release_date}</h5><p>{movie.overview}</p></div></div>
     </Link>);
@@ -67,6 +73,7 @@ async postDatabase(term,object) {
     return (
       <div className="general">
             <h1>{this.props.userName}, check out this awesome selection of movies</h1>
+            <p className="filter">{this.props.filterName==='' ? 'no filter':'filtered by Genre: '+this.props.filterName}</p>
             <div className="grid">{this.state.resultsHTML}</div>
       </div>
       

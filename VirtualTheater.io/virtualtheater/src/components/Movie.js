@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import LeaveReview from './LeaveReview';
+import {Link} from "react-router-dom";
 export default class Movie extends Component {
   constructor(props) {
     super(props);
@@ -19,13 +20,20 @@ export default class Movie extends Component {
       const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
       const response2 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/reviews`);
       const response3 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts`);
+      const response4 = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
       
       
     let movie = response.data;
     let users = response3.data;
     let reviews = response2.data.filter(review => review.movieId === movie.id);
-
-    console.log(reviews);
+    let genres = response4.data["genres"];
+    console.log(genres.filter(genre=>genre.name==="Action")[0]);
+    let rating = 0;
+      for(let review of reviews){
+        rating+=review.rating;
+      }
+    
+    console.log(rating, reviews.length);
     console.log(movie);
       console.log((Math.round(window.innerWidth/100)*100).toString());
     
@@ -43,7 +51,7 @@ export default class Movie extends Component {
             <div className="info">
               
               
-              <p className="description">{movie.overview}</p>
+              <div className="description">{rating===0||reviews.length===0 ? <p>no reviews yet</p>:<p>{new Array(rating/reviews.length).fill(<span>&#9733;</span>)} - {reviews.length} ratings</p>}<p>{movie.overview}</p></div>
               <div className="title"><a href={movie.homepage} target="_blank">Check out the movie website to learn more</a></div>
               
               <div className="buy">
@@ -72,12 +80,37 @@ export default class Movie extends Component {
                     this.setState({purchase:<p>You dont have the neccessary funds</p>});
                 }
             }}>Buy the movie for $19.99</button>
+            <button onClick={() => {
+                if(this.props.balance-9.99>0){
+                this.postDatabase("transactions",{
+                    "title": movie.title,
+                    "date": new Date().toUTCString(),
+                    "image": "https://image.tmdb.org/t/p/w200"+movie.poster_path,
+                    "price": 9.99,
+                    "userId": this.props.userId,
+                    "movieId":this.props.id
+                    });
+                this.postDatabase("accounts",{
+                    "id": this.props.userId,
+                    "balance": this.props.balance-9.99,
+                    "email": this.props.user.email,
+                    "password": this.props.user.password,
+                    "name": this.props.user.name,
+                    "address": this.props.user.address
+                });
+                console.log(this.props.balance-9.99);
+                this.setState({purchase:<p>Congrats on your purchase! You have 30 days to watch this movie</p>});
+                alert("Congrats on your purchase! You have 30 days to watch this movie.");
+            } else {
+                    this.setState({purchase:<p>You dont have the neccessary funds</p>});
+                }
+            }}>Rent the movie for $9.99</button>
             {this.state.purchase}
         </div>
         <div className="post">
           <LeaveReview bttonText="Leave a review" filling={false} userId={this.props.userId} reviewId={null} movieId={this.props.id} rating={""} desc={""}/>
         </div>
-        <div className="multiples genre" ><ul><li className="column-head" >GENRE </li>{movie.genres.map(genre => <li>{genre.name}</li>)}</ul></div>
+        <div className="multiples genre" ><ul><li className="column-head" >GENRE </li>{movie.genres.map(genre => <Link to="/" onClick={() => this.props.getFilter(genres.filter(gen=>gen.name===genre.name)[0].id,genres.filter(gen=>gen.name===genre.name)[0].name)} ><li>{genre.name}</li></Link>)}</ul></div>
               <div className="multiples production" ><ul> <li  className="column-head" >PRODUCED BY</li>{movie.production_companies.map(company => <li>{company.name}</li>)}</ul></div>
               <div className="multiples countries" ><ul><li  className="column-head" >PRODUCED IN</li>{movie.production_countries.map(country => <li>{country.name}</li>)}</ul></div>
         </div>

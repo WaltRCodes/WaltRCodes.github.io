@@ -33,7 +33,7 @@ export default class Profile extends Component {
         document.getElementById('newuserPassword').value=this.state.password;
         document.getElementById('newemail').value=this.state.email;
         document.getElementById('newaddress').value=this.state.address;
-        document.getElementById('newbalance').value=this.state.balance;
+        //document.getElementById('newbalance').value=this.state.balance;
         this.setState({occured:true});
     }
     
@@ -45,7 +45,7 @@ export default class Profile extends Component {
         //console.log(response.data);
         {/* store api data in state */}
         let data = response.data.filter(movie => movie.userId === this.props.userId);
-    let elements = data.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.movieId)} ><img src={movie.image}/><p>Bought on {movie.date.substring(0, 17)} for ${movie.price}</p></Link>);
+    let elements = data.map(movie => <Link to="/Movie" onClick={() => this.props.capture(movie.movieId)} ><img src={movie.image}/><p>{movie.price>10 ? 'Bought': 'Rented'} on {movie.date.substring(0, 17)} for ${movie.price}</p></Link>);
         this.setState({movies:response.data,movieHTML:elements});
     } catch (e) {
     console.log(e);
@@ -132,11 +132,11 @@ async callUserApi() {
   
   render() {
     return (
-        <div className="movie spacing">
-            <h3>{this.props.userName}, edit your profile info here:</h3>
+        <div className="spacing">
+            <h3>{this.props.userName}, view and edit your profile info here:</h3>
             <div className="spacing">
                 {this.state.message}
-                <form  className="spacing">
+                <form  className="spacing profile">
                 <label>
                         Name:
                     </label>
@@ -177,21 +177,16 @@ async callUserApi() {
                         placeholder="address"
                         onChange = {this.onChangeHandler}
                     />
+                    
+                    <button onClick={this.createUserHandler}>
+                        Update
+                    </button> <br />
                     <label>
-                        Balance:
+                        Balance: ${this.state.balance}
                     </label>
-                    <input
-                        type="number"
-                        id="newbalance"
-                        name="newbalance"
-                        onChange = {this.onChangeHandler}
-                    />
-                <button onClick={this.createUserHandler}>
-                    Update
-                </button>
                 </form>
                 </div>
-        <h3>Here are the movies you have purchased</h3>
+        <h4>Here are the movies you have purchased</h4>
     <div  className="spacing">{this.state.movieHTML}</div>
             
         </div>

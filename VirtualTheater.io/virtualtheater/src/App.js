@@ -17,9 +17,12 @@ export default class App extends Component {
         signedIn: false,
         movieId:0,
         user:{},
+        filter:null,
+        filterName:'',
       }
       this.signingIn = this.signingIn.bind(this);
       this.chooseMovie = this.chooseMovie.bind(this);
+      this.genreFilter = this.genreFilter.bind(this);
 }
 
 signingIn(id){
@@ -30,6 +33,9 @@ signingIn(id){
 chooseMovie(movieID){
   this.setState({movieId: movieID});
 }
+genreFilter(newFilter,newFilterName){
+  this.setState({filter: newFilter,filterName:newFilterName});
+}
 render(){
   return (
     <div className="alternative-grid">
@@ -37,9 +43,9 @@ render(){
             <BrowserRouter>
                 <div className="status">Logged in as {this.state.user.name}</div>
                 <Navbar userName={this.state.user.name} />
-                <Route exact strict path="/" render={() => <Search capture={this.chooseMovie} userName={this.state.user.name}/>} />
+                <Route exact strict path="/" render={() => <Search filter={this.state.filter} filterName={this.state.filterName} capture={this.chooseMovie} userName={this.state.user.name}/>} />
                 <Route path="/Profile" render={() => <Profile capture={this.chooseMovie} userId={this.state.user.id} userName={this.state.user.name} userEmail={this.state.user.email} userAddress={this.state.user.address} userPassword={this.state.user.password} userBalance={this.state.user.balance}/>} />
-                <Route path="/Movie" render={() => <Movie id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/>} />
+                <Route path="/Movie" render={() => <Movie getFilter={this.genreFilter} id={this.state.movieId} userId={this.state.user.id} balance={this.state.user.balance} user={this.state.user}/>} />
                 <div className="footer">
                   <p>Information provided by TheMoviedb © 2020 Walter Rada</p>
                 </div>
