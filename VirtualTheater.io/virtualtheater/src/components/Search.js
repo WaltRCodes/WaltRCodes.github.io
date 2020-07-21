@@ -8,7 +8,6 @@ export default class Search extends Component {
       searchTerm: "",
       resultsHTML:'',
       movies:[],
-      filter: null
 
          
     }
@@ -73,7 +72,7 @@ async postDatabase(term,object) {
     return (
       <div className="general">
             <h1>{this.props.userName}, check out this awesome selection of movies</h1>
-            <p className="filter">{this.props.filterName==='' ? 'no filter':'filtered by Genre: '+this.props.filterName}</p>
+            <div className="filter">{this.props.filterName==='' ? <p>no filter</p>:<p>filtered by Genre: {this.props.filterName} <Link to="/" onClick={() => {this.props.getFilter(null,'');this.callApi();}} >Reset Filter</Link></p>}</div>
             <div className="grid">{this.state.resultsHTML}</div>
       </div>
       
