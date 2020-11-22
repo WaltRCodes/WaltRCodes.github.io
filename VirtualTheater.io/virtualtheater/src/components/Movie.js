@@ -16,17 +16,18 @@ export default class Movie extends Component {
    
   }
   async callApi() {
-    try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
-      const response2 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/reviews`);
-      const response3 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts`);
-      const response4 = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
+    let calls = [axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`),axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/reviews`),axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts`),axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_KEY}&language=en-US`)];
+    axios.all(calls).then(axios.spread((...responses) => {
+      // const response = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
+      // const response2 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/reviews`);
+      // const response3 = await axios.get(`https://cors-anywhere.herokuapp.com/https://nameless-dawn-18115.herokuapp.com/walter_api/v3/accounts`);
+      // const response4 = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_KEY}&language=en-US`);
       
       
-    let movie = response.data;
-    let users = response3.data;
-    let reviews = response2.data.filter(review => review.movieId === movie.id);
-    let genres = response4.data["genres"];
+    let movie = responses[0].data;
+    let users = responses[2].data;
+    let reviews = responses[1].data.filter(review => review.movieId === movie.id);
+    let genres = responses[3].data["genres"];
     console.log(genres.filter(genre=>genre.name==="Action")[0]);
     let rating = 0;
       for(let review of reviews){
@@ -139,9 +140,9 @@ export default class Movie extends Component {
       this.setState({
         movieHTML: movieHTML, reviewHTML:reviewsHTML
       })
-    } catch (e) {
-      console.log(e);
-    }
+    })).catch(errors => {
+      console.log(errors);
+    })
   }
 
   componentDidMount() {
